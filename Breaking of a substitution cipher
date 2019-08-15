@@ -1,0 +1,58 @@
+Breaking of a substitution cipher
+
+Dear Students, 
+As we discussed in the class that it is relatively easy to break a substitution cipher in particular when the nature of plaintext is known (say a paragraph written in English)  
+Following is the ciphertext that I have generated using a substitution mechanism with a random mapping. Write a program find out the plaintext using known frequency distribution of English alphabets. You can assume that the special characters (spaces, comma, and dots) have been replaced as it is from the plaintext.  You can also find the key (mapping) that I have used to encrypt the plaintext. This is a completely non-evaluative assignment. It will help to understand the course better and also in doing future assignments which will be evaluative. Also, try to decrypt the message by removing all the special characters.  
+
+Here is the Ciphertext. 
+Lo mqehs xmsar, flyho d pmomdinedchq rzcrqlqzqlmo xemrh nidloqhwq eh jomxr qm ch lo Hofilre, qeh bsvnqdodivrq xlii bmzoq qeh ozpchs mg ihqqhsr lo qeh blnehsqhwq. Lg eh gloar qedq, rdv, I lr qeh pmrq gshtzhoq, eh jomxr cv qeh odqzsh mg qeh blnehs qedq lq pzrq rqdoa gms qeh pmrq gshtzhoq ihqqhs lo qeh elaaho nidloqhwq. Rlobh qedq lr Hofilre, eh bdo hwnhbq qedq qedq ihqqhs lr h. Bmorhtzhoqiv, eh bdo drrzph qedq I shnshrhoqr h. Qelr lr qeh cdrlb nsmbhrr mg bsvnqdodivrlr.
+
+## My submission
+
+```Python3
+arr = input()
+
+d = {
+    'a' : 'd', 'A' : 'D',
+    'd' : 'a', 'D' : 'A',
+    'b' : 'c', 'B' : 'C',
+    'c' : 'b', 'C' : 'B',
+    'e' : 'h', 'E' : 'H',
+    'h' : 'e', 'H' : 'E',
+    'f' : 'g', 'F' : 'G',
+    'g' : 'f', 'G' : 'F',
+    'i' : 'l', 'I' : 'L',
+    'l' : 'i', 'L' : 'I',
+    'j' : 'k', 'J' : 'K',
+    'k' : 'j', 'K' : 'J',
+    'm' : 'o', 'M' : 'O',
+    'o' : 'n', 'O' : 'N',
+    'n' : 'p', 'N' : 'P',
+    'p' : 'm', 'P' : 'M',
+    'q' : 't', 'Q' : 'T',
+    't' : 'q', 'T' : 'Q',
+    'r' : 's', 'R' : 'S',
+    's' : 'r', 'S' : 'r',   
+    'w' : 'x', 'W' : 'X',
+    'x' : 'w', 'X' : 'W',
+    'v' : 'y', 'V' : 'Y', 
+    'y' : 'v', 'Y' : 'V',
+    'u' : 'z', 'U' : 'Z',
+    'z' : 'u', 'Z' : 'U',
+}
+
+result = []
+
+for i in arr:
+    if d.get(i) is None:
+        result.append(i)
+    else:
+        result.append(d[i])
+        
+result = ''.join(result)
+
+print(result)
+```
+
+## Resulting plaintext is:
+In other words, given a monoalphabet substitution whose plaintext he knows to be in English, the cryptanalyst will count the number of letters in the ciphertext. If he finds that, say, L is the most frequent, he knows by the nature of the cipher that it must stand for the most frequent letter in the hidden plaintext. Since that is English, he can expect that that letter is e. Consequently, he can assume that L represents e. This is the basic process of cryptanalysis.
